@@ -1,0 +1,131 @@
+// variables 
+
+$color-blue: hsl(197, 37%, 24%);
+$color-green: hsl(173, 58%, 39%);
+$color-yellow: hsl(43, 74%, 66%);
+$color-orange: hsl(27, 87%, 67%);
+$color-red: hsl(12, 76%, 61%);
+
+
+.search-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 15px;
+}
+
+.search-input {
+    border: 0;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    font-weight: 700;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown~.search-label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.search-label {
+    position: absolute;
+    letter-spacing: 0.1rem;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: white;
+}
+
+.search-input:focus {
+    ~.search-label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: white;
+        font-weight: 700;
+    }
+
+    font-weight: 700;
+    padding-bottom: 6px;
+    border-width: 3px;
+}
+
+.search-input {
+
+    &:required,
+    &:invalid {
+        box-shadow: none;
+    }
+}
+
+.btn-main {
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    text-transform: capitalize;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    box-shadow: 5px 5px 5px rgba($color: #000000, $alpha: 0.3);
+
+    &:hover {
+        background-color: white;
+        color: $color-blue;
+    }
+}
+
+.container-cities {
+    .cities {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        .city {
+            position: relative;
+            padding: 40px 10%;
+            border-radius: 20px;
+            background-color: white;
+            color: $color-blue;
+
+            .card-info {
+
+                .city-temp {
+                    font-size: 5rem;
+                    font-weight: bold;
+                    margin-top: 10px;
+                }
+
+                sup {
+                    font-size: 0.5em;
+                }
+
+                figcaption {
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+
+                .city-icon {
+                    margin-top: 10px;
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+
+        }
+    }
+}

@@ -7,41 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js" type="module"></script>
 </head>
 
 <body>
     <header>
-        <h1>weather app</h1>
+        <h1 data-text="weather app">weather app</h1>
     </header>
-    <main>
-        <section class="search-bar">
-            <div class="container-bar">
-                <form>
-                    <input type="text" placeholder="the weather in..." autofocus>
-                    <button class="btn-main">submit</button>
-                </form>
-            </div>
-        </section>
-        <section class="ajax-section">
-            <div class="container-cities">
-                <ul class="cities">
-                    <li class="city">
-                        <div class="card-city">
-                            <h2 class="city-name">...</h2>
-                            <div class="card-info">
-                                <span class="city-temp">... <sup>ºC</sup></span>
-                                <figure>
-                                    <img src="..." alt="..." class="city-icon">
-                                </figure>
-                                <figcaption>...</figcaption>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </main>
-    <script src="/js/app.js"></script>
+    <section class="search-bar">
+        <div class="container-bar">
+            <form>
+                <div class="search-group">
+                    <input class="search-input" id="city" type="text" name="city" placeholder="Seacrh city">
+                    <label for="city" class="search-label">Search city</label>
+                </div>
+                <button class="btn-main">submit</button>
+            </form>
+        </div>
+    </section>
+    <section class="ajax-section">
+        <div class="container-cities">
+            <ul class="cities">
+            </ul>
+        </div>
+    </section>
 </body>
 
 </html>
