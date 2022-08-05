@@ -26,17 +26,18 @@ body {
 
 header {
     align-self: center;
+    text-align: center;
 }
 
 h1 {
     font-family: 'Cairo', sans-serif;
     letter-spacing: 0.7rem;
     text-transform: uppercase;
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 2rem;
     font-weight: 900;
     color: #E4E5E6;
-    -webkit-text-stroke: 0.7px white;
+    -webkit-text-stroke: 0.4px white;
 }
 
 h1 {
@@ -82,5 +83,6 @@ h1:after {
 }
 
 .ajax-section {
-    margin: 4rem;
+    margin: 4rem 2rem;
+    align-self: center;
 }

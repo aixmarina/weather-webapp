@@ -91,41 +91,64 @@ $color-red: hsl(12, 76%, 61%);
 .container-cities {
     .cities {
         display: flex;
-        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
         flex-wrap: wrap;
 
         .city {
-            position: relative;
-            padding: 40px 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 20px;
-            background-color: white;
-            color: $color-blue;
+            border: 2px solid white;
+            color: white;
+            padding: 1rem;
+            width: 300px;
+            position: relative;
 
-            .card-info {
-
-                .city-temp {
-                    font-size: 5rem;
-                    font-weight: bold;
-                    margin-top: 10px;
-                }
-
-                sup {
-                    font-size: 0.5em;
-                }
-
-                figcaption {
-                    margin-top: 10px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
-
-                .city-icon {
-                    margin-top: 10px;
-                    width: 100px;
-                    height: 100px;
-                }
+            &::after {
+                content: ' ';
+                background-color: transparent;
+                display: block;
+                top: 10%;
+                width: 100%;
+                height: 250px;
+                position: absolute;
+                right: -30px;
+                left: 5%;
+                z-index: -1;
+                border-radius: 20px;
+                border-right: 2px solid white;
+                border-bottom: 2px solid white;
             }
 
+            .card-city {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h2 {
+                    font-size: 2rem;
+                    font-weight: 600;
+                }
+
+                .card-info {
+                    display: flex;
+                    align-items: flex-start;
+
+                    .city-temp {
+                        font-size: 3rem;
+                        margin-top: 10px;
+                    }
+
+                    .city-icon {
+                        margin-top: 10px;
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+            }
         }
     }
 }

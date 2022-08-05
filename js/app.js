@@ -27,13 +27,13 @@ async function getWeather(city) {
             <h2 class="city-name" data-name="${name}">
             <span>${name}</span>
             </h2>
-            <div class=card-info">
+            <div class="card-info">
             <span class="city-temp">${Math.round(main.temp)}<sup>°</sup>C</span>
             <figure>
             <img class="city-icon" src=${icon} alt=${weather[0]["main"]}>
             </figure>
-            <figcaption>${weather[0]["description"]}</figcaption>
             </div>
+            <figcaption>${weather[0]["description"]}</figcaption>
             </div>`
         li.innerHTML = markup
         list.appendChild(li)
