@@ -1,13 +1,44 @@
 import { apiKey } from "./secrets.js";
 
+const msg = document.querySelector(".msg")
 const form = document.querySelector(".search-bar form");
 const list = document.querySelector("ul.cities")
+const listItems = document.querySelectorAll(".ajax-section .city")
+const listItemsArray = Array.from(listItems)
 const url = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}`
 
 form.addEventListener("submit", e => {
     e.preventDefault(); // stop the form from submitting, hence prevent reloading the page
     const inputVal = e.target.city.value; // grab de the value which is contained in the search field
+    if (listItemsArray.length > 0) {
+        console.log("first")
+        const filteredArray = listItemsArray.filter(el => {
+            let content = ""
+            if (inputVal.includes(",")) {
+                if (inputVal.split(",")[1].length > 2) {
+                    inputVal = inputVal.split(",")[0]
+                    content = el.query(".city-name span").textContent.toLowerCase()
+                    console.log(content, "1")
+                } else {
+                    content = el.querySelector(".city-name").dataset.name.toLowerCase()
+                    console.log(content, "2")
+                }
+            } else {
+                content = el.query(".city-name span").textContent.toLowerCase()
+                console.log(content, "3")
+            }
+            return content == inputVal.toLowerCase()
+        })
+
+        if (filteredArray.length > 0) {
+            msg.textContent = `You already know the weather for ${filteredArray[0].querySelector(".city-name span").textContent} ...otherwise be more specific by providing the country code as well :)`;
+            // form.reset();
+            return;
+        }
+    }
     getWeather(inputVal)
+    msg.textContent = "";
+    form.reset();
 })
 
 async function getWeather(city) {
@@ -17,9 +48,9 @@ async function getWeather(city) {
     try {
         const response = await fetch(query)
         data = await response.json()
-        console.log(data)
+        console.log(data, "data")
         const { main, name, weather } = data // data.main, data.name, data.weather
-        const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`
+        const icon = `./icons/${weather[0]["icon"]}.svg`
         const li = document.createElement("li")
         li.classList.add("city")
         const markup = `
@@ -40,6 +71,32 @@ async function getWeather(city) {
 
     } catch (error) {
         console.log(error)
+        msg.textContent = "Please search for a valid city :("
     }
 }
+
+// async function checkCity() {
+//     if (listItemsArray.length > 0) {
+//         const filteredArray = listItemsArray.filter(el => {
+//             let content = ""
+//             if (inputVal.includes(",")) {
+//                 if (inputVal.split(",")[1].length > 2) {
+//                     inputVal = inputVal.split(",")[0]
+//                     content = el.query(".city-name span").textContent.toLowerCase()
+//                 } else {
+//                     content = el.querySelector(".city-name").dataset.name.toLowerCase()
+//                 }
+//             } else {
+//                 content = el.query(".city-name span").textContent.toLowerCase()
+//             }
+//             return content == inputVal.toLowerCase()
+//         })
+
+//         if (filteredArray.length > 0) {
+//             msg.textContent = `You already know the weather for ${filteredArray[0].querySelector(".city-name span").textContent} ...otherwise be more specific by providing the country code as well :)`;
+//             // form.reset();
+//             return;
+//         }
+//     }
+// }
 

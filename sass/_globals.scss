@@ -75,6 +75,16 @@ h1:after {
         flex-direction: row;
         align-items: flex-end;
         gap: 2rem;
+        position: relative;
+
+        .msg {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            max-width: 600px;
+            min-height: 40px;
+            font-size: 1.1rem;
+        }
     }
 }
 
