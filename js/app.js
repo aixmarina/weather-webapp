@@ -1,12 +1,11 @@
-import { apiKey } from "./secrets.js"
-// import '../icons/*'
+import * as images from './images.js'
 
 const msg = document.querySelector(".msg")
 const form = document.querySelector(".search-bar form");
 const list = document.querySelector("ul.cities")
 const listItems = document.querySelectorAll(".ajax-section .city")
 const listItemsArray = Array.from(listItems)
-const url = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}`
+const url = `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.API_KEY}`
 
 form.addEventListener("submit", e => {
     e.preventDefault(); // stop the form from submitting, hence prevent reloading the page
@@ -52,7 +51,7 @@ async function getWeather(city) {
         console.log(data, "data")
         const { main, name, weather } = data // data.main, data.name, data.weather
         // const icon = `./icons/${weather[0]["icon"]}.svg`
-        const logo = new URL(`../icons/img/${weather[0]["icon"]}.svg`, import.meta.url);
+        const logo = `${images[`icon${weather[0]['icon']}`]}`
         const li = document.createElement("li")
         li.classList.add("city")
         const markup = `

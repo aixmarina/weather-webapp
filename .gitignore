@@ -2,3 +2,4 @@ js/secrets.js
 node_modules
 .cache
 dist
+.env.local
