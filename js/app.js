@@ -1,4 +1,5 @@
-import { apiKey } from "./secrets.js";
+import { apiKey } from "./secrets.js"
+// import '../icons/*'
 
 const msg = document.querySelector(".msg")
 const form = document.querySelector(".search-bar form");
@@ -50,7 +51,8 @@ async function getWeather(city) {
         data = await response.json()
         console.log(data, "data")
         const { main, name, weather } = data // data.main, data.name, data.weather
-        const icon = `./icons/${weather[0]["icon"]}.svg`
+        // const icon = `./icons/${weather[0]["icon"]}.svg`
+        const logo = new URL(`../icons/img/${weather[0]["icon"]}.svg`, import.meta.url);
         const li = document.createElement("li")
         li.classList.add("city")
         const markup = `
@@ -61,7 +63,7 @@ async function getWeather(city) {
             <div class="card-info">
             <span class="city-temp">${Math.round(main.temp)}<sup>°</sup>C</span>
             <figure>
-            <img class="city-icon" src=${icon} alt=${weather[0]["main"]}>
+            <img class="city-icon" src=${logo} alt=${weather[0]["main"]}>
             </figure>
             </div>
             <figcaption>${weather[0]["description"]}</figcaption>
