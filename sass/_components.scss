@@ -22,7 +22,7 @@ $color-red: hsl(12, 76%, 61%);
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
-    font-weight: 700;
+    font-weight: 500;
 
     &::placeholder {
         color: transparent;
@@ -53,10 +53,10 @@ $color-red: hsl(12, 76%, 61%);
         transition: 0.2s;
         font-size: 1rem;
         color: white;
-        font-weight: 700;
+        font-weight: 500;
     }
 
-    font-weight: 700;
+    font-weight: 500;
     padding-bottom: 6px;
     border-width: 3px;
 }
@@ -95,6 +95,7 @@ $color-red: hsl(12, 76%, 61%);
         align-items: center;
         gap: 3rem;
         flex-wrap: wrap;
+        max-width: 1340px;
 
         .city {
             display: flex;
@@ -131,17 +132,17 @@ $color-red: hsl(12, 76%, 61%);
 
                 h2 {
                     font-size: 2rem;
-                    font-weight: 600;
+                    font-weight: 200;
                 }
 
                 .card-info {
                     display: flex;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 1rem;
+                    margin: 1rem;
 
                     .city-temp {
                         font-size: 3rem;
-                        margin-top: 10px;
                     }
 
                     .city-icon {
@@ -151,6 +152,11 @@ $color-red: hsl(12, 76%, 61%);
                         -webkit-filter: invert(100%);
                         filter: invert(100%);
                     }
+                }
+
+                figcaption {
+                    font-size: 1.5rem;
+                    font-weight: 100;
                 }
             }
         }
