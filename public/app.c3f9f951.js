@@ -323,8 +323,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 var msg = document.querySelector(".msg");
 var form = document.querySelector(".search-bar form");
 var list = document.querySelector("ul.cities");
@@ -335,35 +333,6 @@ form.addEventListener("submit", function (e) {
   e.preventDefault(); // stop the form from submitting, hence prevent reloading the page
 
   var inputVal = e.target.city.value; // grab de the value which is contained in the search field
-
-  if (listItemsArray.length > 0) {
-    console.log("first");
-    var filteredArray = listItemsArray.filter(function (el) {
-      var content = "";
-
-      if (inputVal.includes(",")) {
-        if (inputVal.split(",")[1].length > 2) {
-          inputVal.split(",")[0], _readOnlyError("inputVal");
-          content = el.query(".city-name span").textContent.toLowerCase();
-          console.log(content, "1");
-        } else {
-          content = el.querySelector(".city-name").dataset.name.toLowerCase();
-          console.log(content, "2");
-        }
-      } else {
-        content = el.query(".city-name span").textContent.toLowerCase();
-        console.log(content, "3");
-      }
-
-      return content == inputVal.toLowerCase();
-    });
-
-    if (filteredArray.length > 0) {
-      msg.textContent = "You already know the weather for ".concat(filteredArray[0].querySelector(".city-name span").textContent, " ...otherwise be more specific by providing the country code as well :)"); // form.reset();
-
-      return;
-    }
-  }
 
   getWeather(inputVal);
   msg.textContent = "";
@@ -474,7 +443,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59635" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52092" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
